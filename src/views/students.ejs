@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Students</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped tabled-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">code_student</th>
+                    <th scope="col">name_student</th>
+                    <th scope="col">lastname_student</th>
+                    <th scope="col">birth_date_student</th>
+                    <th scope="col">status_student</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% students.forEach( (student)=> {%>
+                      <tr>
+                          <th scope="row"><%= student.id_student %></th>
+                          <td><%= student.code_student %></td>
+                          <td><%= student.name_student %></td>
+                          <td><%= student.lastname_student %></td>
+                          <td><%= student.birth_date_student %></td>
+                          <td><%= student.status_student %></td>
+                          <td><a href="/students/edit/<%=student.id_student%>" class="btn btn-primary"><i class="bi bi-pencil-square" title="Edit student"></i></a></td>
+                          <td>
+                            <form action="/students/destroy/<%=student.id_student%>" method="post">
+                              <button type="submit" class="btn btn-danger" onclick="return confirm('¿Esta seguro que desea eliminar el registro')" title="Delete student"><i class="bi bi-trash"></i></button>
+                          </form>
+                        </tr>
+                  <%} ) %>
+                </tbody>
+              </table>
+              <div class="d-flex flex-wrap" >
+                <a href="/students/create" class="btn btn-primary"><i class="bi bi-plus-circle" title="Create new student"></i></a>
+                <a href="/" class="btn btn-primary" style="margin-left: 1%;"><i class="bi bi-house-door-fill" title="Create new student"></i></a>
+              </div>
+            </div>
+    </div>
+    
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
